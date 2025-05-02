@@ -28,5 +28,5 @@ install.packages("xmlrpc2")
 
 ## License
 
-This package is licensed under the GPL-3 License.
+This package is licensed under the [GPL-3](https://cran.r-project.org/web/licenses/GPL-3) License.
 
