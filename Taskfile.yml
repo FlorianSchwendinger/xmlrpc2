@@ -1,0 +1,48 @@
+version: '3'
+
+vars:
+  PKG: xmlrpc2
+
+tasks:
+  docs:
+    desc: Generate documentation using roxygen2
+    cmds:
+      - R -e 'library("roxygen2"); roxygenize(".", c("rd", "namespace"))'
+      - sed -i 's/RoxygenNote.*//g' DESCRIPTION
+
+  build:
+    desc: Build the R package
+    deps: [docs]
+    cmds: 
+      - R CMD build .
+
+  inst:
+    desc: Install the package
+    deps: [build]
+    cmds:
+      - R CMD INSTALL {{.PKG}}*.tar.gz
+
+  check:
+    desc: Check the package
+    deps: [build]
+    cmds:
+      - R CMD check {{.PKG}}*.tar.gz
+
+  manual:
+    desc: Generate PDF manual
+    deps: [clean]
+    cmds:
+      - R CMD Rd2pdf --output=Manual.pdf .
+
+  clean:
+    desc: Clean up generated files
+    cmds:
+      - rm -f Manual.pdf {{.PKG}}_*.tar.gz
+      - rm -rf .Rd2pdf*
+      - rm -rf {{.PKG}}.Rcheck
+
+  devcheck_win_devel:
+    desc: Check package on Windows development version
+    deps: [build]
+    cmds:
+      - R -e "devtools::check_win_devel(email = 'FlorianSchwendinger@gmx.at')"
