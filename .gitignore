@@ -1,0 +1,66 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.Ruserdata
+
+# User-specific files
+*.Rproj.user/
+
+# Example code in package vignettes
+*.R.user/
+
+# RStudio Desktop
+.rstudio-desktop
+
+# RStudio Launcher
+.rs.launch.json
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R Markdown cache files
+*_cache/
+/cache/
+
+# R Environment Variables
+.Renviron
+
+# pkgdown site
+/_pkgdown/
+/docs/
+
+# translation files
+/po/R-*.pot
+/po/*.mo
+
+# R CHECK output
+*.Rcheck/
+
+# RStudio Connect folder
+rsconnect/
+
+# build artefacts
+/*.tar.gz
+/*.Rproj
+/src/*.o
+/src/*.so
+/src/*.dll
+
+# macOS specific files
+.DS_Store
+
+# Vignette output
+/inst/doc/
+/vignettes/*.html
+/vignettes/*.pdf
+
+# renv/packrat libraries
+renv/
+packrat/
+
+# Temporary files from editors
+*~
+*.swp
